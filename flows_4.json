@@ -1,0 +1,173 @@
+[
+    {
+        "id": "dd9e38afc9d19475",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3e7a5a6feddf93d5",
+        "type": "mqtt in",
+        "z": "dd9e38afc9d19475",
+        "name": "",
+        "topic": "codigoIoT/g7/mosquitto/msg",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "a422f77cf3c0d462",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "dd3f8cdf901eeb6c"
+            ]
+        ]
+    },
+    {
+        "id": "dd3f8cdf901eeb6c",
+        "type": "json",
+        "z": "dd9e38afc9d19475",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "b785def3ee15bd7e",
+                "6feee392ac8761dc"
+            ]
+        ]
+    },
+    {
+        "id": "6feee392ac8761dc",
+        "type": "debug",
+        "z": "dd9e38afc9d19475",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b785def3ee15bd7e",
+        "type": "function",
+        "z": "dd9e38afc9d19475",
+        "name": "",
+        "func": "msg.topic = msg.payload.id;\nmsg.payload = msg.payload.temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "95e1229c376088d0"
+            ]
+        ]
+    },
+    {
+        "id": "95e1229c376088d0",
+        "type": "ui_chart",
+        "z": "dd9e38afc9d19475",
+        "name": "",
+        "group": "c71bf618bc556fc0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 690,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a422f77cf3c0d462",
+        "type": "mqtt-broker",
+        "name": "Broker HiveMQ G7",
+        "broker": "35.157.61.99",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c71bf618bc556fc0",
+        "type": "ui_group",
+        "name": "Temperatura alumnos",
+        "tab": "f0651adedb7eb39f",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f0651adedb7eb39f",
+        "type": "ui_tab",
+        "name": "Temperatura",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
